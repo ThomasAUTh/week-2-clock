@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Simple Clock</title>
+
+    <style>
+        #clock {
+          display: flex;
+          flex-direction: row;
+        }
+        #hours {
+          color: blue;
+        }
+        #minutes {
+          color: red;
+        }
+        #seconds {
+          color: green;
+        }
+      </style>
+
+  </head>
+
+  <body>
+    <main>
+      <div id="clock">
+        <h1><span id='hours'></span>:</h1>
+        <h1><span id='minutes'></span>:</h1>
+        <h1><span id='seconds'></span></h1>
+      </div>
+    </main>
+
+    <script>
+        const displayNumbers = (time) => {
+          if (time > 10){
+            return time
+          } else {
+            return `0${time}`
+          }
+        }
+        const newDate = () => {
+          let date = new Date()
+          let hours = date.getHours()
+          let minutes = date.getMinutes()
+          let seconds = date.getSeconds()
+          document.getElementById('hours').innerHTML = displayNumbers(hours)
+          document.getElementById('minutes').innerHTML = displayNumbers(minutes)
+          document.getElementById('seconds').innerHTML = displayNumbers(seconds) 
+        }
+        
+        setInterval(() => { newDate() }, 1000)
+      </script>
+  </body>
+
+</html>
